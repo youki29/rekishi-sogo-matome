@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>歴史総合まとめ｜大戦間期の世界 1919–1939</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F7FA; --sheet:#FFFFFF; --ink:#1F2A44; --sub:#56627A; --rule:#D6DCE6;
+  --marker:#FFE45C; --pink:#FFB3CF; --red:#D2283C; --redsheet:#E0404F; --navy:#2B3F7A;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131825; --sheet:#1B2232; --ink:#E7EBF3; --sub:#A3ADC2; --rule:#323C52;
+    --marker:#6B5A12; --pink:#6B2A44; --red:#FF6B7A; --redsheet:#B8303E; --navy:#9DB2F0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131825; --sheet:#1B2232; --ink:#E7EBF3; --sub:#A3ADC2; --rule:#323C52;
+  --marker:#6B5A12; --pink:#6B2A44; --red:#FF6B7A; --redsheet:#B8303E; --navy:#9DB2F0;
+  color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  font-size:16px;line-height:1.85;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;line-height:1.35;margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--navy);outline-offset:2px;border-radius:4px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--sheet);border-bottom:1px solid var(--rule)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sheet)}
+.bar{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:8px 16px}
+.brand{font-family:"Zen Old Mincho",serif;font-weight:900;font-size:1.05rem;margin-right:auto;white-space:nowrap}
+nav.tabs{max-width:880px;margin:0 auto;display:flex;gap:4px;padding:0 12px;overflow-x:auto}
+nav.tabs a{flex:1 0 auto;text-align:center;padding:10px 14px;text-decoration:none;color:var(--sub);font-weight:700;border-bottom:3px solid transparent}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--red)}
+.iconbtn{border:1px solid var(--rule);background:transparent;border-radius:999px;padding:4px 12px;font-size:.85rem;cursor:pointer}
+
+main{max-width:880px;margin:0 auto;padding:24px 16px 80px}
+.view{display:none}.view.on{display:block}
+
+/* hero */
+.hero{padding:12px 0 24px}
+.hero h1{font-size:clamp(1.9rem,6vw,2.8rem);font-weight:900;letter-spacing:.02em}
+.hero h1 .yr{display:block;font-size:.5em;color:var(--sub);font-weight:700;letter-spacing:.1em}
+.hero p{color:var(--sub);max-width:36em;margin:.8em 0 0}
+
+/* red sheet */
+mark{background:linear-gradient(transparent 45%,var(--marker) 45%);color:inherit;padding:0 .1em;border-radius:2px}
+mark.p{background:linear-gradient(transparent 45%,var(--pink) 45%)}
+body.sheet mark{background:var(--redsheet);color:transparent;cursor:pointer;user-select:none}
+body.sheet mark.open{background:linear-gradient(transparent 45%,var(--marker) 45%);color:var(--red);font-weight:700}
+.sheetbtn[aria-pressed="true"]{background:var(--redsheet);color:#fff;border-color:var(--redsheet)}
+
+/* chapters */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;padding:0;list-style:none}
+.toc a{display:block;padding:6px 12px;border:1px solid var(--rule);border-radius:6px;text-decoration:none;color:var(--ink);font-size:.9rem;background:var(--sheet)}
+section.ch{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:24px 20px;margin-bottom:28px}
+section.ch > h2{font-size:1.5rem;font-weight:900}
+.pg{color:var(--sub);font-size:.85rem;margin:.2em 0 1em}
+.q{border-left:4px solid var(--red);padding:2px 0 2px 12px;margin:0 0 1.2em;font-weight:700}
+section.ch h3{font-size:1.1rem;margin:1.6em 0 .5em;padding-bottom:4px;border-bottom:1px dashed var(--rule)}
+section.ch ul{padding-left:1.2em;margin:.4em 0}
+section.ch li{margin:.25em 0}
+.box{border:1px solid var(--rule);border-radius:8px;padding:12px 14px;margin:1em 0;background:var(--paper)}
+.box b{color:var(--navy)}
+.sum{border:2px solid var(--ink);border-radius:8px;padding:14px 16px;margin-top:1.4em}
+.sum strong{font-family:"Zen Old Mincho",serif}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+.tw{overflow-x:auto}
+td,th{border:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--paper);white-space:nowrap}
+
+/* timeline */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.chip{border:1px solid var(--rule);background:var(--sheet);border-radius:999px;padding:4px 12px;font-size:.88rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+ol.tl{list-style:none;margin:0;padding:0;position:relative}
+ol.tl::before{content:"";position:absolute;left:62px;top:6px;bottom:6px;width:2px;background:var(--rule)}
+.tl li{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:8px 0;position:relative}
+.tl .y{font-family:"Zen Old Mincho",serif;font-weight:900;font-size:1.1rem;text-align:right}
+.tl li::after{content:"";position:absolute;left:57px;top:17px;width:12px;height:12px;border-radius:50%;background:var(--sheet);border:3px solid var(--c,var(--ink))}
+.tl .ev{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:8px 12px}
+.tl .tag{display:inline-block;font-size:.75rem;padding:0 8px;border-radius:999px;color:#fff;background:var(--c);margin-right:6px;vertical-align:2px}
+.tl .ev small{display:block;color:var(--sub);font-size:.85rem;line-height:1.6;margin-top:2px}
+.tl li.big .ev{border:2px solid var(--red)}
+
+/* cloze */
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+select{font:inherit;color:var(--ink);background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:6px 8px}
+.btn{border:1px solid var(--ink);background:var(--sheet);border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:700}
+.btn.main{background:var(--ink);color:var(--paper)}
+ol.cloze{padding-left:1.6em;margin:0}
+ol.cloze li{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:10px 14px;margin:0 0 10px}
+.blank{display:inline-block;min-width:5em;border:none;border-bottom:2px solid var(--red);background:transparent;color:transparent;cursor:pointer;padding:0 .3em;margin:0 .15em;line-height:1.4;text-align:center}
+.blank.open{color:var(--red);font-weight:700}
+.chlabel{display:block;font-size:.78rem;color:var(--sub)}
+
+/* qa */
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:24px 20px;min-height:220px;display:flex;flex-direction:column}
+.card .meta{display:flex;justify-content:space-between;color:var(--sub);font-size:.85rem}
+.card .qq{font-size:1.2rem;font-weight:700;margin:18px 0;flex:1}
+.card .ans{font-family:"Zen Old Mincho",serif;font-size:1.5rem;font-weight:900;color:var(--red);min-height:1.6em;margin-bottom:16px}
+.card .ans small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-size:.9rem;font-weight:400;color:var(--sub)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .btn{flex:1;min-height:44px}
+.progress{height:6px;background:var(--rule);border-radius:3px;margin:16px 0 6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--red);width:0;transition:width .3s}
+.stat{color:var(--sub);font-size:.88rem}
+.empty{text-align:center;padding:40px 0;color:var(--sub)}
+
+footer{text-align:center;color:var(--sub);font-size:.8rem;padding:24px 16px 40px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:520px){
+  section.ch{padding:18px 14px}
+  ol.tl::before{left:46px}
+  .tl li{grid-template-columns:42px 1fr;gap:16px}
+  .tl li::after{left:41px}
+  .tl .y{font-size:.95rem}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar">
+    <span class="brand">歴史総合まとめ</span>
+    <button class="iconbtn sheetbtn" id="sheetBtn" aria-pressed="false" title="重要語句を赤シートで隠す">赤シート</button>
+  </div>
+  <nav class="tabs" aria-label="ページ切り替え">
+    <a href="#summary">まとめ</a>
+    <a href="#timeline">年表</a>
+    <a href="#cloze">穴埋め</a>
+    <a href="#qa">一問一答</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ===== まとめ ===== -->
+  <div class="view" id="v-summary">
+    <div class="hero">
+      <h1><span class="yr">1919 → 1939</span>二つの大戦のあいだ</h1>
+      <p>第一次世界大戦後の国際体制から、アジアのナショナリズム、アメリカの繁栄、世界恐慌、ファシズムの台頭まで。上の「赤シート」を押すと、マーカー部分が隠れます。隠れた語句はタップで1つずつ確認できます。</p>
+    </div>
+    <ul class="toc">
+      <li><a href="#ch-versailles">ヴェルサイユ・ワシントン体制</a></li>
+      <li><a href="#ch-asia">アジアのナショナリズム</a></li>
+      <li><a href="#ch-usa">アメリカの繁栄とその陰</a></li>
+      <li><a href="#ch-crisis">世界恐慌の時代</a></li>
+      <li><a href="#ch-fascism">ファシズムの伸長</a></li>
+    </ul>
+
+    <section class="ch" id="ch-versailles">
+      <h2>ヴェルサイユ体制とワシントン体制</h2>
+      <p class="pg">教科書 p.94–97</p>
+      <p class="q">WWⅠ後、新たにどのような国際体制が築かれたのだろう？</p>
+
+      <h3>ヴェルサイユ体制（ヨーロッパ／ドイツ封じ）</h3>
+      <ul>
+        <li>1919年 <mark>パリ講和会議</mark>：ウィルソンの<mark>十四か条</mark>の影響のもと戦勝国で話し合い</li>
+        <li>中心：アメリカ（<mark>ウィルソン</mark>）、イギリス（<mark>ロイド＝ジョージ</mark>）、フランス（<mark>クレマンソー</mark>＝ドイツを厳しく罰したい）。イタリア（オルランド）、日本（<mark>西園寺公望</mark>）も参加</li>
+        <li>対独講和条約＝<mark>ヴェルサイユ条約</mark>に基づき<mark>ヴェルサイユ体制</mark>が成立</li>
+      </ul>
+      <div class="box"><b>ヴェルサイユ条約の内容</b>（テストで◯×で出るかも）
+        <ul>
+          <li><mark>アルザス・ロレーヌ</mark>をフランスに割譲（鉄・石炭の産地）</li>
+          <li><mark>ラインラント</mark>の非武装化（ライン川のまわり）</li>
+          <li>軍備の一部禁止（軍備制限）</li>
+          <li>多額の<mark>賠償金</mark>支払いの義務（GNPの約20年分＝支払い不可能）</li>
+          <li>すべての植民地の没収</li>
+          <li>日本が国際連盟の委任統治領として旧ドイツ領の<mark>南洋諸島</mark>を支配</li>
+        </ul>
+        →多くのドイツ人が不満 → のちのヒトラー登場へ
+      </div>
+
+      <h3>国際連盟（1920年発足）</h3>
+      <ul>
+        <li>目的：国際平和の維持と国際協力の促進。本部は<mark>ジュネーヴ</mark></li>
+        <li><mark>アメリカ</mark>の不参加（大統領が提案したのに、議会が<mark>孤立主義</mark>で反対）</li>
+        <li>当初は敗戦国<mark>ドイツ</mark>と社会主義の<mark>ソ連</mark>を除外（ドイツは1925年<mark>ロカルノ条約</mark>に基づき翌1926年加盟）</li>
+        <li>議決方法：<mark>全会一致</mark>／制裁措置：<mark>経済制裁</mark>が中心</li>
+      </ul>
+
+      <h3>民族自決とその限界</h3>
+      <div class="box"><b>民族自決とは</b>：各民族が自分たちの政治体制を、他国から干渉されずに決められるという考え</div>
+      <ul>
+        <li>民族自決が適用されたのは<mark>東ヨーロッパ</mark>や<mark>バルカン半島</mark>だけ → 戦勝国は、独立国が<mark>ソ連（社会主義）に対する壁</mark>になることを期待</li>
+        <li><mark>アジア</mark>や<mark>アフリカ</mark>には適用されず → 朝鮮で<mark>三・一独立運動</mark>、中国で<mark>五・四運動</mark></li>
+      </ul>
+      <div class="box"><b>ヴェルサイユ体制の問題点</b>
+        <ol>
+          <li>ドイツにとって懲罰的で過酷すぎる内容</li>
+          <li>民族自決の原則はアジアやアフリカには適用されず</li>
+          <li>アメリカの不参加、当初はソ連や敗戦国ドイツを除外</li>
+          <li>イギリス・フランスの意向が反映されてバランスを欠く</li>
+        </ol>
+      </div>
+
+      <h3>ワシントン体制（アジア・太平洋／日本封じ）</h3>
+      <ul>
+        <li>1921年 <mark>ワシントン会議</mark>：アメリカ大統領<mark>ハーディング</mark>の提唱。英・日・仏などが参加</li>
+      </ul>
+      <div class="tw"><table>
+        <tr><th>条約</th><th>内容</th></tr>
+        <tr><td><mark>四か国条約</mark>（1921）</td><td>太平洋の安全保障、<mark>日英同盟</mark>の破棄</td></tr>
+        <tr><td><mark>九か国条約</mark>（1922）</td><td>中国の<mark>門戸開放・機会均等</mark>を確認。日本は中国に<mark>山東省の旧ドイツ権益</mark>を返還（二十一か条要求の一部がなくなる）</td></tr>
+        <tr><td><mark>海軍軍備制限条約</mark>（1922）</td><td>主力艦の保有制限　英：米：日：仏：伊＝<mark>5：5：3</mark>：1.67：1.67</td></tr>
+      </table></div>
+      <p>→ 台頭した<mark>日本</mark>を抑え込む体制。日本のメディアは「アメリカなどの要求で日本が多くの権益を失った」と受け止めた。</p>
+      <div class="box"><b>なぜ日本は受け入れた？</b><br>大戦景気が終わり財政難。全権の加藤友三郎は「金がなければ戦争ができぬ」と述べ、軍縮のほうが安全保障上合理的と判断。欧米と協調して孤立を避けたかった。</div>
+
+      <h3>国際協調・軍縮の動き</h3>
+      <ul>
+        <li>ヴェルサイユ体制とワシントン体制のもとで国際協調の機運が高まる</li>
+        <li>1928年 <mark>不戦条約</mark>（パリ）：国際紛争を解決する手段として戦争を用いることは違法</li>
+        <li>ただし<mark>自衛のための戦争</mark>は認められた → ヒトラー（WWⅡ）を止められなかった</li>
+      </ul>
+    </section>
+
+    <section class="ch" id="ch-asia">
+      <h2>アジアのナショナリズム</h2>
+      <p class="pg">教科書 p.102–104</p>
+      <p class="q">WWⅠ後、アジアのナショナリズムはなぜ高まったのだろう？</p>
+      <p>ナショナリズム＝国民主義・民族主義（愛国心）。</p>
+
+      <h3>朝鮮</h3>
+      <ul>
+        <li>1910年 <mark>韓国併合</mark> → <mark>朝鮮総督府</mark>を設置し、<mark>武断政治</mark>（軍人が厳しく支配）を行う。初代総督は寺内正毅（伊藤博文は前年に暗殺された）</li>
+        <li>1919年 <mark>三・一独立運動</mark>：日本の支配に対して「独立万歳」を叫んだ民衆の運動</li>
+        <li>きっかけの「新しい考え」＝ウィルソンの<mark>民族自決</mark></li>
+        <li>女性たちは武器を持たずに行進 → 武器ではなく<mark>非暴力</mark>の抗議で国際社会の支持を得ようとした</li>
+      </ul>
+
+      <h3>中国</h3>
+      <ul>
+        <li>1915年 日本が<mark>二十一か条の要求</mark>を突きつけ、山東半島のドイツ権益を得る</li>
+        <li>1919年 パリ講和会議（ヴェルサイユ条約）で、要求の取り消しと<mark>山東半島</mark>の権益返還を求めるが認められず</li>
+        <li>1919年 <mark>五・四運動</mark>：北京大学の学生を中心にデモ</li>
+        <li>1921〜22年 ワシントン会議（九か国条約）で山東の権益が中国に返還される（日本封じ）</li>
+      </ul>
+
+      <h3>インド</h3>
+      <ul>
+        <li>WWⅠ前：<mark>日露戦争</mark>での日本の勝利に刺激をうけ、民族的自覚と反英意識が高まる</li>
+        <li>大戦中、イギリスはインドに<mark>戦争協力の代わりに自治</mark>を約束 → 守らなかった</li>
+        <li>1919年 <mark>ローラット法</mark>：令状なしの逮捕や裁判なしの投獄を認める</li>
+        <li><mark>ガンディー</mark>による<mark>非暴力・不服従</mark>の運動</li>
+        <li>1930年 <mark>塩の行進</mark>：約360kmを行進し、自分たちで<mark>塩</mark>を作る（イギリスの塩の専売への抗議）</li>
+      </ul>
+      <div class="box"><b>ガンディーと糸車</b><br>若い頃は西洋風のエリートの服装 → のちに手織りの布をまとい、<mark>糸車</mark>（綿花から糸をつむぐ）を使った。インドの国旗案にも糸車。<br>産業革命でイギリスの綿製品がインドに流れ込み、インドの手織り職人は失業、インドは綿花を輸出するだけのモノカルチャー化。<br>→ 西洋の近代文明を否定し、<mark>インドの伝統</mark>に基づいた産業の復興と<mark>国産品愛用</mark>を主張。誰でも参加しやすく、民衆に広く受け入れられた民族運動。</div>
+
+      <h3>西アジア</h3>
+      <p>大戦中の<mark>イギリス</mark>の多重外交や、オスマン帝国に対する不平等条約などがナショナリズムの高まりにつながった。</p>
+
+      <div class="sum"><strong>まとめ</strong><br>中国ではパリ講和会議で<mark>山東半島</mark>の権益の返還が認められなかったことが、朝鮮ではウィルソン大統領の<mark>民族自決</mark>の影響を受けたことが、ナショナリズムの高まりにつながった。インドでは大戦中に約束された<mark>自治</mark>が守られなかったこと、西アジアでも大戦中の<mark>イギリス</mark>の多重外交やオスマン帝国に対する不平等条約などが、ナショナリズムの高まりにつながった。</div>
+    </section>
+
+    <section class="ch" id="ch-usa">
+      <h2>アメリカの繁栄とその陰</h2>
+      <p class="pg">教科書 p.88〜</p>
+      <p class="q">WWⅠはアメリカにどのような影響を与えたのだろう？</p>
+
+      <h3>アメリカの繁栄</h3>
+      <ul>
+        <li>背景：WWⅠの被害が軽微／ヨーロッパに軍需物資や戦費を提供し、経済的地位を向上</li>
+        <li>WWⅠ後、<mark>債務国</mark>から<mark>債権国</mark>へ転じ（借りる側 → 貸す側）、世界経済の中心へ</li>
+        <li><mark>フォード</mark>社の<mark>ベルトコンベア方式</mark>で自動車産業が栄え、ラジオ・映画などメディアも発達、庶民の生活が豊かに</li>
+        <li>1920年代、都市を中心に<mark>大量生産・大量消費</mark>をもとにした<mark>大衆文化</mark>が形成された（<mark>大衆消費社会</mark>）</li>
+      </ul>
+
+      <h3>繁栄の陰：社会の不寛容さ・保守化</h3>
+      <ul>
+        <li>アメリカの中心＝<mark>WASP</mark>（White Anglo-Saxon Protestant）</li>
+        <li>ストッダード『白人世界の優位に対抗する有色人種の勃興』（1920年）：白人の世界支配が揺らぐという不安 → アジアからの移民への<mark>人種差別</mark></li>
+        <li><mark>移民法</mark>（1924年）で<mark>日本人</mark>などを排斥（人口増加・文化の違い・現地の人が失業するという反発）</li>
+        <li><mark>KKK</mark>（クー・クラックス・クラン）による<mark>黒人</mark>迫害</li>
+        <li><mark>禁酒法</mark>：ビール醸造の多い<mark>ドイツ系</mark>への迫害の面も。密造酒が出回りマフィアが台頭、代替飲料が流行</li>
+      </ul>
+    </section>
+
+    <section class="ch" id="ch-crisis">
+      <h2>世界恐慌の時代</h2>
+      <p class="pg">教科書 p.116–119</p>
+      <p class="q">世界恐慌はなぜ波及し、それに各国はどのように対応したのだろう？</p>
+
+      <h3>恐慌前のお金の流れ</h3>
+      <ul>
+        <li>1924年 <mark>ドーズ案</mark>：賠償金の支払い期限の緩和と、アメリカ資本のドイツへの貸与</li>
+        <li>アメリカ →（<mark>融資</mark>）→ ドイツ →（賠償金：ヴェルサイユ条約）→ 英・仏・伊 →（戦債支払い）→ アメリカ</li>
+        <li>最も重要なのは<mark>アメリカからドイツへの融資</mark>。国際経済は<mark>アメリカ</mark>によって動いていた</li>
+      </ul>
+
+      <h3>恐慌の発生と波及</h3>
+      <ul>
+        <li>1929年 <mark>ニューヨーク株式市場（ウォール街）</mark>で株価が大暴落し、<mark>世界恐慌</mark>が始まる</li>
+        <li>原因：戦後の<mark>過剰な工場生産</mark>や行き過ぎた<mark>投機</mark>など（作りすぎた → 余った → 値下がり）</li>
+        <li>多くの国で銀行の倒産や工場の閉鎖が相次ぎ、大量の<mark>失業者</mark>が生まれる</li>
+        <li><mark>アメリカの資本</mark>が各国から引き上げられ、全資本主義国へ波及</li>
+        <li>失業率グラフ：A＝<mark>ドイツ</mark>（30%超）、B＝<mark>アメリカ</mark>、C＝<mark>日本</mark></li>
+      </ul>
+
+      <h3>アメリカの対応</h3>
+      <ul>
+        <li>1931年 <mark>フーヴァー＝モラトリアム</mark>：賠償金・戦債支払いの1年間の支払い猶予 → 効果なし</li>
+        <li><mark>フランクリン＝ローズヴェルト</mark>大統領の<mark>ニューディール政策</mark>（恐慌打開政策の総称）</li>
+      </ul>
+      <div class="tw"><table>
+        <tr><th>年</th><th>政策</th><th>内容</th></tr>
+        <tr><td>1933</td><td><mark>農業調整法</mark>（AAA）</td><td>政府が農業生産や価格を調整（作りすぎ対策）</td></tr>
+        <tr><td>1933</td><td><mark>全国産業復興法</mark>（NIRA）</td><td>政府が企業の生産を統制</td></tr>
+        <tr><td>1933</td><td><mark>テネシー川流域開発公社</mark>（TVA）</td><td>ダム建設などの<mark>公共事業</mark>による失業者対策</td></tr>
+        <tr><td>1935</td><td><mark>ワグナー法</mark></td><td>団結権・団体交渉権の容認</td></tr>
+      </table></div>
+      <p>AAAとNIRAの共通点：<mark>政府が民間の経済活動に介入</mark>（資本主義なのに自由を制限＝<mark>修正資本主義</mark>）。しかし両法は最高裁で憲法違反となり、目立った成果は出せず…。</p>
+
+      <h3>各国の対応</h3>
+      <ul>
+        <li>1914年の植民地面積：A＝<mark>イギリス</mark>、B＝<mark>フランス</mark>、C＝<mark>ドイツ</mark>、D＝<mark>日本</mark></li>
+        <li>「持てる国」（英・仏）：植民地を使った<mark>ブロック経済</mark> … 連邦内では関税を引き下げ、連邦外には高関税（<mark>保護貿易</mark>）</li>
+        <li>「持たざる国」（日・独・伊）：<mark>侵略</mark>によって市場・領土の拡大を図る＝ヴェルサイユ体制・ワシントン体制の打破を目指す
+          <ul>
+            <li>日本：軍部（関東軍）の台頭、1931〜33年 <mark>満洲事変</mark> → 満洲国の建国</li>
+            <li>イタリア：<mark>ムッソリーニ</mark>による独裁（1922–1943）</li>
+            <li>ドイツ：<mark>ヒトラー</mark>による独裁（1933–1945）</li>
+          </ul>
+        </li>
+        <li>日独伊の国際的孤立が強まる → 1939年 <mark>第二次世界大戦</mark>へ</li>
+      </ul>
+      <div class="sum"><strong>まとめ</strong><br>第一次世界大戦後、世界経済の中心は<mark>アメリカ</mark>であった。その<mark>ニューヨーク</mark>で株価の暴落から始まった恐慌は、ヨーロッパに投資していた資金の回収や市場の縮小により世界に波及した。英仏は<mark>ブロック経済</mark>による<mark>保護貿易</mark>などによって恐慌からの脱出を図ったが、それまでの世界経済の繁栄の前提であった<mark>自由貿易</mark>の機会は失われ、社会は不安定化していった。ブロック経済は第二次世界大戦の遠因となる…。</div>
+    </section>
+
+    <section class="ch" id="ch-fascism">
+      <h2>ファシズムの伸長と共産主義①</h2>
+      <p class="pg">教科書 p.120〜</p>
+      <div class="box"><b>ナチスの2つの大罪</b>
+        <ol>
+          <li><mark>ホロコースト</mark>：反ユダヤ主義を掲げ、ユダヤ人を大虐殺（約600万人の犠牲者）</li>
+          <li>断種法、<mark>T4作戦</mark>（障害者などの殺害、7万273人の犠牲者）</li>
+        </ol>
+      </div>
+      <p class="q">ヒトラーが大衆の支持を得たのは、なぜだろう？</p>
+      <ul>
+        <li>ヒトラー（独）とムッソリーニ（伊）の共通点：大勢の人の前で演説し<mark>国民の支持</mark>を得た独裁者。軍服姿（暴力的）</li>
+        <li>⇒ 独裁者は<mark>民主主義の中から誕生</mark>した！</li>
+      </ul>
+
+      <h3>ドイツ年表</h3>
+      <div class="tw"><table>
+        <tr><th>1919</th><td><mark>ヴェルサイユ条約</mark>：ドイツに対する懲罰的な内容（賠償金が多い、植民地取り上げ）→ ドイツ不景気・国民の不満</td></tr>
+        <tr><th>1919</th><td><mark>ヴァイマル憲法</mark>：世界で最も民主的な憲法と言われる（<mark>社会権・生存権</mark>）。ヴァイマル共和国（1918–1933）</td></tr>
+        <tr><th>1920</th><td><mark>国民社会主義ドイツ労働者党</mark>（ナチ党）の結成：党首アドルフ＝ヒトラー</td></tr>
+        <tr><th>1923</th><td><mark>ミュンヘン一揆</mark>に失敗し投獄。獄中で『<mark>わが闘争</mark>』を口述筆記</td></tr>
+        <tr><th>1929</th><td><mark>世界恐慌</mark> → ナチ党は<mark>方針転換</mark>（暴力ではなく選挙で）</td></tr>
+        <tr><th>1930</th><td><mark>総選挙</mark>で第2党に躍進（<mark>合法的</mark>）</td></tr>
+        <tr><th>1932</th><td>総選挙で<mark>第1党</mark>に躍進</td></tr>
+        <tr><th>1933</th><td>1月 <mark>ヒトラー内閣</mark>誕生<br>2月 <mark>国会議事堂放火事件</mark>を口実に<mark>共産党を弾圧</mark><br>3月 <mark>全権委任法</mark> → 一党独裁体制を確立<br>10月 <mark>国際連盟の脱退</mark></td></tr>
+        <tr><th>1934</th><td><mark>総統</mark>（フューラー）になる（首相＋大統領）</td></tr>
+        <tr><th>1936</th><td><mark>ラインラント進駐</mark>などヴェルサイユ体制を無視して膨張を続ける</td></tr>
+        <tr><th>1939</th><td><mark>第二次世界大戦</mark>の勃発</td></tr>
+      </table></div>
+
+      <div class="box"><b>全権委任法の何が問題？</b><br><mark>立法権を内閣に委任</mark>したこと。モンテスキューが『<mark>法の精神</mark>』で説いた<mark>三権分立</mark>（立法＝国会、司法＝裁判所、行政＝内閣）が崩れ、内閣が法律を自由に作れるようになった。</div>
+      <div class="box"><b>共産党とは</b>：社会主義、平等を重視、ソ連を目指す、団結・革命 → ナチスは<mark>反共産主義</mark></div>
+
+      <h3>ナチ党のスローガン</h3>
+      <ul>
+        <li>ヴェルサイユ体制の打破</li>
+        <li>ドイツ民族の優位性とユダヤ人排斥</li>
+        <li>反共産主義</li>
+        <li>失業者の救済</li>
+        <li>領土の拡大</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ===== 年表 ===== -->
+  <div class="view" id="v-timeline">
+    <div class="hero"><h1><span class="yr">TIMELINE</span>年表で流れをつかむ</h1>
+      <p>地域ボタンで絞り込めます。赤枠は特に重要なできごとです。</p></div>
+    <div class="filters" id="tlFilters"></div>
+    <ol class="tl" id="tl"></ol>
+  </div>
+
+  <!-- ===== 穴埋め ===== -->
+  <div class="view" id="v-cloze">
+    <div class="hero"><h1><span class="yr">FILL IN THE BLANKS</span>穴埋め問題</h1>
+      <p>赤い下線をタップすると答えが出ます。もう一度タップで隠れます。</p></div>
+    <div class="tools">
+      <select id="clozeCh" aria-label="単元を選ぶ"></select>
+      <button class="btn" id="clozeShow">全部見る</button>
+      <button class="btn" id="clozeHide">全部隠す</button>
+      <button class="btn" id="clozeShuffle">シャッフル</button>
+    </div>
+    <ol class="cloze" id="clozeList"></ol>
+  </div>
+
+  <!-- ===== 一問一答 ===== -->
+  <div class="view" id="v-qa">
+    <div class="hero"><h1><span class="yr">Q &amp; A</span>一問一答</h1>
+      <p>答えを確認したら「覚えた」か「もう一回」を選びます。「覚えた」の記録はこのブラウザに保存されます。</p></div>
+    <div class="tools">
+      <select id="qaCh" aria-label="単元を選ぶ"></select>
+      <select id="qaMode" aria-label="出題範囲">
+        <option value="todo">まだ覚えていない問題だけ</option>
+        <option value="all">すべての問題</option>
+      </select>
+      <button class="btn" id="qaReset">記録をリセット</button>
+    </div>
+    <div id="qaBox"></div>
+    <div class="progress"><span id="qaBar"></span></div>
+    <div class="stat" id="qaStat"></div>
+  </div>
+</main>
+<footer>歴史総合 授業プリント（ヴェルサイユ体制〜ファシズム）をもとに作成した自習用まとめ</footer>
+
+<script>
+const CH = {
+  versailles:"ヴェルサイユ・ワシントン体制",
+  asia:"アジアのナショナリズム",
+  usa:"アメリカの繁栄とその陰",
+  crisis:"世界恐慌の時代",
+  fascism:"ファシズムの伸長"
+};
+
+/* ---------- 年表データ ---------- */
+const REG = {
+  "ヨーロッパ":"#2B6CB0","ドイツ":"#4A4A4A","アメリカ":"#2F855A",
+  "日本・朝鮮・中国":"#C05621","インド・西アジア":"#805AD5","世界":"#D2283C"
+};
+const TL = [
+  [1904,"インド・西アジア","日露戦争","日本の勝利にインドの人々が刺激を受け、民族的自覚と反英意識が高まる"],
+  [1910,"日本・朝鮮・中国","韓国併合","朝鮮総督府を設置し武断政治を行う（初代総督 寺内正毅）"],
+  [1914,"世界","第一次世界大戦（〜1918）","",1],
+  [1915,"日本・朝鮮・中国","二十一か条の要求","日本が中国に要求。山東半島の旧ドイツ権益を得る"],
+  [1919,"ヨーロッパ","パリ講和会議・ヴェルサイユ条約","ウィルソンの十四か条。対独講和条約でヴェルサイユ体制が成立",1],
+  [1919,"日本・朝鮮・中国","三・一独立運動（朝鮮）","「独立万歳」を叫んだ民衆の運動。民族自決の影響"],
+  [1919,"日本・朝鮮・中国","五・四運動（中国）","山東半島の返還が認められず、北京大学の学生中心にデモ"],
+  [1919,"インド・西アジア","ローラット法","令状なしの逮捕や裁判なしの投獄を認める"],
+  [1919,"ドイツ","ヴァイマル憲法","世界で最も民主的な憲法。社会権（生存権）"],
+  [1920,"ヨーロッパ","国際連盟の発足","本部ジュネーヴ。アメリカ不参加、ドイツ・ソ連は当初除外、全会一致、経済制裁"],
+  [1920,"ドイツ","ナチ党の結成","国民社会主義ドイツ労働者党。党首ヒトラー"],
+  [1921,"日本・朝鮮・中国","ワシントン会議（〜1922）","ハーディングの提唱。四か国条約（日英同盟破棄）・九か国条約（山東返還）・海軍軍備制限条約（5：5：3）",1],
+  [1922,"ヨーロッパ","ムッソリーニ政権（イタリア）","ファシスト党の独裁（〜1943）"],
+  [1923,"ドイツ","ミュンヘン一揆","失敗してヒトラー投獄。獄中で『わが闘争』"],
+  [1924,"アメリカ","ドーズ案","賠償金の支払い期限緩和とアメリカ資本のドイツ貸与"],
+  [1924,"アメリカ","移民法","日本人などアジアからの移民を排斥"],
+  [1925,"ヨーロッパ","ロカルノ条約","翌1926年、ドイツが国際連盟に加盟"],
+  [1928,"世界","不戦条約","戦争を国際紛争解決の手段とすることは違法。自衛戦争は認められた"],
+  [1929,"世界","世界恐慌","ニューヨーク株式市場（ウォール街）で株価大暴落",1],
+  [1930,"インド・西アジア","塩の行進","ガンディーが約360km行進し、塩を作る。非暴力・不服従"],
+  [1930,"ドイツ","ナチ党、総選挙で第2党に","世界恐慌後、合法的に躍進"],
+  [1931,"アメリカ","フーヴァー＝モラトリアム","賠償金・戦債の1年間支払い猶予。効果なし"],
+  [1931,"日本・朝鮮・中国","満洲事変（〜1933）","関東軍が起こす → 満洲国の建国"],
+  [1932,"ドイツ","ナチ党、総選挙で第1党に",""],
+  [1933,"ドイツ","ヒトラー内閣・全権委任法","1月 内閣誕生／2月 国会議事堂放火事件で共産党弾圧／3月 全権委任法で一党独裁／10月 国際連盟脱退",1],
+  [1933,"アメリカ","ニューディール政策","フランクリン＝ローズヴェルト。AAA・NIRA・TVA"],
+  [1934,"ドイツ","ヒトラーが総統に","首相＋大統領"],
+  [1935,"アメリカ","ワグナー法","団結権・団体交渉権の容認"],
+  [1936,"ドイツ","ラインラント進駐","ヴェルサイユ体制を無視して膨張"],
+  [1939,"世界","第二次世界大戦の勃発","",1]
+];
+
+/* ---------- 穴埋めデータ ---------- */
+const CLOZE = [
+  ["versailles","1919年の[パリ講和会議]は、ウィルソンの[十四か条]の影響のもとで開かれた。"],
+  ["versailles","パリ講和会議の中心はアメリカの[ウィルソン]、イギリスの[ロイド＝ジョージ]、フランスの[クレマンソー]だった。"],
+  ["versailles","ヴェルサイユ条約で、ドイツは[アルザス・ロレーヌ]をフランスに割譲し、[ラインラント]は非武装化された。"],
+  ["versailles","日本は国際連盟の[委任統治]領として旧ドイツ領の[南洋諸島]を支配した。"],
+  ["versailles","国際連盟の本部は[ジュネーヴ]に置かれ、議決方法は[全会一致]、制裁措置は[経済制裁]が中心だった。"],
+  ["versailles","国際連盟には提唱国の[アメリカ]が不参加で、当初は敗戦国ドイツと[ソ連]が除外された。"],
+  ["versailles","民族自決の原則は[東ヨーロッパ]や[バルカン半島]にだけ適用され、アジアやアフリカには適用されなかった。"],
+  ["versailles","1921年の[ワシントン会議]は、アメリカ大統領[ハーディング]の提唱で開かれた。"],
+  ["versailles","[四か国条約]で太平洋の安全保障が定められ、[日英同盟]が破棄された。"],
+  ["versailles","[九か国条約]で中国の[門戸開放]・機会均等が確認された。"],
+  ["versailles","海軍軍備制限条約で、主力艦の保有比率は英：米：日＝[5：5：3]とされた。"],
+  ["versailles","1928年の[不戦条約]では戦争が違法とされたが、[自衛]のための戦争は認められた。"],
+  ["asia","1910年の韓国併合後、日本は[朝鮮総督府]を置き[武断政治]を行った。"],
+  ["asia","1919年、朝鮮で「独立万歳」を叫ぶ[三・一独立運動]が起こった。"],
+  ["asia","パリ講和会議で[山東半島]の権益返還が認められず、中国で[五・四運動]が起こった。"],
+  ["asia","大戦中イギリスはインドに戦争協力の代わりに[自治]を約束したが、守らなかった。"],
+  ["asia","1919年の[ローラット法]は、令状なしの逮捕や裁判なしの投獄を認めた。"],
+  ["asia","[ガンディー]は[非暴力・不服従]の運動を指導した。"],
+  ["asia","1930年、ガンディーは約360kmを行進して自ら[塩]を作る[塩の行進]を行った。"],
+  ["usa","WWⅠ後、アメリカは[債務国]から[債権国]へ転じ、世界経済の中心となった。"],
+  ["usa","[フォード]社は[ベルトコンベア]方式で自動車を大量生産した。"],
+  ["usa","1920年代のアメリカでは[大量生産・大量消費]をもとにした[大衆文化]が形成された。"],
+  ["usa","1924年の[移民法]で[日本人]などが排斥された。"],
+  ["usa","[KKK]（クー・クラックス・クラン）は[黒人]を迫害した。"],
+  ["crisis","1924年の[ドーズ案]で、アメリカ資本がドイツに貸し与えられた。"],
+  ["crisis","1929年、ニューヨークの[ウォール街]で株価が大暴落し、[世界恐慌]が始まった。"],
+  ["crisis","1931年の[フーヴァー＝モラトリアム]は、賠償金・戦債支払いを1年間猶予したが効果がなかった。"],
+  ["crisis","[フランクリン＝ローズヴェルト]大統領は[ニューディール]政策を実施した。"],
+  ["crisis","[TVA]（テネシー川流域開発公社）は[公共事業]による失業者対策だった。"],
+  ["crisis","政府が民間の経済活動に介入する考え方を[修正資本主義]という。"],
+  ["crisis","「持てる国」の英仏は、植民地との間で[ブロック経済]を行い、外には高関税をかける[保護貿易]をとった。"],
+  ["crisis","「持たざる国」の日本は1931年に[満洲事変]を起こし、満洲国を建国した。"],
+  ["fascism","ナチスは反ユダヤ主義を掲げ、[ホロコースト]で約600万人のユダヤ人を虐殺した。"],
+  ["fascism","1919年制定の[ヴァイマル憲法]は、[社会権（生存権）]を定めた世界で最も民主的な憲法といわれた。"],
+  ["fascism","1923年、ヒトラーは[ミュンヘン一揆]に失敗し、獄中で『[わが闘争]』を口述筆記した。"],
+  ["fascism","1933年2月、ナチスは[国会議事堂放火事件]を口実に[共産党]を弾圧した。"],
+  ["fascism","1933年3月の[全権委任法]で[立法権]が内閣に委任され、一党独裁体制が確立した。"],
+  ["fascism","モンテスキューは『[法の精神]』で[三権分立]を説いた。"],
+  ["fascism","1934年、ヒトラーは首相と大統領を兼ねる[総統]となった。"],
+  ["fascism","1936年、ドイツは[ラインラント]に進駐した。"]
+];
+
+/* ---------- 一問一答データ ---------- */
+const QA = [
+  ["versailles","第一次世界大戦の講和会議（1919年）を何という？","パリ講和会議"],
+  ["versailles","パリ講和会議に影響を与えた、ウィルソンの平和原則は？","十四か条"],
+  ["versailles","ドイツを厳しく罰することを主張したフランスの首相は？","クレマンソー"],
+  ["versailles","パリ講和会議に参加した日本の全権は？","西園寺公望"],
+  ["versailles","ヴェルサイユ条約でフランスに割譲された、鉄・石炭の産地は？","アルザス・ロレーヌ"],
+  ["versailles","ヴェルサイユ条約で非武装化された、ライン川沿いの地域は？","ラインラント"],
+  ["versailles","国際連盟の本部が置かれた都市は？","ジュネーヴ"],
+  ["versailles","国際連盟の議決方法は？","全会一致"],
+  ["versailles","国際連盟に参加しなかった、提唱国はどこ？","アメリカ","議会が孤立主義で反対"],
+  ["versailles","各民族が自分たちの政治体制を他国から干渉されずに決められるという考えは？","民族自決"],
+  ["versailles","戦勝国が東欧の独立国に期待した役割は？","ソ連（社会主義）に対する壁"],
+  ["versailles","ワシントン会議を提唱したアメリカ大統領は？","ハーディング"],
+  ["versailles","日英同盟の破棄を定めた条約は？","四か国条約"],
+  ["versailles","中国の門戸開放・機会均等を確認した条約は？","九か国条約"],
+  ["versailles","海軍軍備制限条約での英・米・日の主力艦保有比率は？","5：5：3"],
+  ["versailles","日本がワシントン会議の条約を受け入れた主な理由は？","財政難で、欧米と協調して孤立を避けたかったから"],
+  ["versailles","1928年、戦争を国際紛争解決の手段とすることを違法とした条約は？","不戦条約（パリ不戦条約）"],
+  ["asia","1910年、日本が朝鮮を植民地にしたできごとは？","韓国併合"],
+  ["asia","韓国併合後に置かれた統治機関は？","朝鮮総督府","初代総督は寺内正毅"],
+  ["asia","1919年、朝鮮で起きた独立を求める民衆運動は？","三・一独立運動"],
+  ["asia","1919年、北京大学の学生を中心に起きた中国の運動は？","五・四運動"],
+  ["asia","中国がパリ講和会議で返還を求めたが認められなかった地域の権益は？","山東半島"],
+  ["asia","1919年、令状なしの逮捕を認めたイギリスのインド統治法は？","ローラット法"],
+  ["asia","ガンディーの運動の方法を何という？","非暴力・不服従"],
+  ["asia","1930年、ガンディーが約360km歩いた抗議行動は？","塩の行進"],
+  ["asia","ガンディーが糸車を使って訴えたことは？","インドの伝統に基づく産業の復興と国産品の愛用"],
+  ["usa","WWⅠ後、アメリカは債務国から何へ転じた？","債権国"],
+  ["usa","ベルトコンベア方式で自動車を大量生産した会社は？","フォード社"],
+  ["usa","1920年代のアメリカで形成された社会を何という？","大衆消費社会"],
+  ["usa","アメリカ社会の中心とされた白人・アングロサクソン・プロテスタントの略称は？","WASP"],
+  ["usa","1924年に日本人などの移民を排斥した法律は？","移民法"],
+  ["usa","黒人を迫害した白人至上主義団体は？","KKK（クー・クラックス・クラン）"],
+  ["usa","密造酒やマフィアの台頭を招いた法律は？","禁酒法"],
+  ["crisis","1924年、賠償金支払いを緩和しアメリカ資本をドイツに貸した案は？","ドーズ案"],
+  ["crisis","世界恐慌のきっかけとなった株価暴落が起きた場所は？","ニューヨーク株式市場（ウォール街）"],
+  ["crisis","世界恐慌の主な原因は？","戦後の過剰な工場生産と行き過ぎた投機"],
+  ["crisis","1931年、賠償金・戦債の支払いを1年猶予した政策は？","フーヴァー＝モラトリアム"],
+  ["crisis","フランクリン＝ローズヴェルトの恐慌対策の総称は？","ニューディール政策"],
+  ["crisis","政府が農業生産や価格を調整した法律（AAA）は？","農業調整法"],
+  ["crisis","政府が企業の生産を統制した法律（NIRA）は？","全国産業復興法"],
+  ["crisis","ダム建設などの公共事業で失業者対策をした機関は？","TVA（テネシー川流域開発公社）"],
+  ["crisis","1935年、団結権・団体交渉権を認めた法律は？","ワグナー法"],
+  ["crisis","AAAとNIRAの共通点は？","政府が民間の経済活動に介入したこと（修正資本主義）"],
+  ["crisis","英仏が行った、植民地を囲い込み外に高関税をかける経済は？","ブロック経済"],
+  ["crisis","「持たざる国」とされた3か国は？","日本・ドイツ・イタリア"],
+  ["crisis","世界恐慌の失業率グラフで、最も失業率が高かった国は？","ドイツ"],
+  ["fascism","ナチスによるユダヤ人の大虐殺を何という？","ホロコースト","約600万人が犠牲"],
+  ["fascism","世界で最も民主的と言われた1919年のドイツの憲法は？","ヴァイマル憲法"],
+  ["fascism","ナチ党の正式名称は？","国民社会主義ドイツ労働者党"],
+  ["fascism","1923年、ヒトラーが失敗したクーデタは？","ミュンヘン一揆"],
+  ["fascism","ヒトラーが獄中で口述筆記した本は？","『わが闘争』"],
+  ["fascism","ナチ党が第1党になったのは何年の総選挙？","1932年"],
+  ["fascism","1933年、ナチスが共産党弾圧の口実にした事件は？","国会議事堂放火事件"],
+  ["fascism","立法権を内閣に委任し、一党独裁を確立した法律は？","全権委任法"],
+  ["fascism","全権委任法によって崩れた、モンテスキューの考えは？","三権分立"],
+  ["fascism","1934年、首相と大統領を兼ねたヒトラーの地位は？","総統（フューラー）"],
+  ["fascism","ヒトラーとムッソリーニの共通点は？","大勢の前で国民の支持を得た独裁者（民主主義の中から誕生）"]
+];
+
+/* ---------- ユーティリティ ---------- */
+const $ = s => document.querySelector(s);
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const shuffle = a => {a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc = s => s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function chOptions(sel){
+  sel.innerHTML = `<option value="all">すべての単元</option>` +
+    Object.entries(CH).map(([k,v])=>`<option value="${k}">${v}</option>`).join("");
+}
+
+/* ---------- ルーティング ---------- */
+const VIEWS = ["summary","timeline","cloze","qa"];
+function route(){
+  const h = location.hash.slice(1);
+  let v = VIEWS.includes(h) ? h : (h.startsWith("ch-") ? "summary" : "summary");
+  document.querySelectorAll(".view").forEach(el=>el.classList.toggle("on", el.id==="v-"+v));
+  document.querySelectorAll("nav.tabs a").forEach(a=>{
+    if(a.getAttribute("href")==="#"+v) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  });
+  if(h.startsWith("ch-")){const t=document.getElementById(h); if(t) t.scrollIntoView();}
+  else window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+
+/* ---------- 赤シート ---------- */
+const sheetBtn = $("#sheetBtn");
+function setSheet(on){
+  document.body.classList.toggle("sheet",on);
+  sheetBtn.setAttribute("aria-pressed",on);
+  document.querySelectorAll("mark.open").forEach(m=>m.classList.remove("open"));
+  store.set("rekiso-sheet",on);
+}
+sheetBtn.addEventListener("click",()=>setSheet(!document.body.classList.contains("sheet")));
+document.addEventListener("click",e=>{
+  const m = e.target.closest("mark");
+  if(m && document.body.classList.contains("sheet")) m.classList.toggle("open");
+});
+
+/* ---------- 年表 ---------- */
+let tlReg = "all";
+function renderTL(){
+  const f = $("#tlFilters");
+  f.innerHTML = [["all","すべて"],...Object.keys(REG).map(r=>[r,r])]
+    .map(([k,l])=>`<button class="chip" data-r="${k}" aria-pressed="${k===tlReg}">${l}</button>`).join("");
+  $("#tl").innerHTML = TL.filter(e=>tlReg==="all"||e[1]===tlReg).map(([y,r,t,d,big])=>
+    `<li class="${big?"big":""}" style="--c:${REG[r]}"><span class="y">${y}</span>
+     <div class="ev"><span class="tag">${r}</span><b>${t}</b>${d?`<small>${d}</small>`:""}</div></li>`).join("");
+}
+$("#tlFilters").addEventListener("click",e=>{const b=e.target.closest(".chip"); if(b){tlReg=b.dataset.r; renderTL();}});
+
+/* ---------- 穴埋め ---------- */
+let clozeOrder = CLOZE.map((_,i)=>i);
+function renderCloze(){
+  const ch = $("#clozeCh").value;
+  $("#clozeList").innerHTML = clozeOrder.map(i=>CLOZE[i]).filter(c=>ch==="all"||c[0]===ch).map(([c,s])=>{
+    const html = esc(s).replace(/\[([^\]]+)\]/g,(_,a)=>`<button class="blank" aria-label="答えを見る">${a}</button>`);
+    return `<li><span class="chlabel">${CH[c]}</span>${html}</li>`;
+  }).join("");
+}
+$("#clozeList").addEventListener("click",e=>{
+  const b=e.target.closest(".blank"); if(!b) return;
+  b.classList.toggle("open"); b.setAttribute("aria-label", b.classList.contains("open")?"答えを隠す":"答えを見る");
+});
+$("#clozeCh").addEventListener("change",renderCloze);
+$("#clozeShow").addEventListener("click",()=>document.querySelectorAll(".blank").forEach(b=>b.classList.add("open")));
+$("#clozeHide").addEventListener("click",()=>document.querySelectorAll(".blank").forEach(b=>b.classList.remove("open")));
+$("#clozeShuffle").addEventListener("click",()=>{clozeOrder=shuffle(clozeOrder); renderCloze();});
+
+/* ---------- 一問一答 ---------- */
+let known = new Set(store.get("rekiso-known",[]));
+let deck = [], pos = 0, revealed = false;
+function pool(){
+  const ch=$("#qaCh").value, mode=$("#qaMode").value;
+  return QA.map((q,i)=>i).filter(i=>(ch==="all"||QA[i][0]===ch)&&(mode==="all"||!known.has(i)));
+}
+function newDeck(){deck=shuffle(pool()); pos=0; revealed=false; renderQA();}
+function renderQA(){
+  const ch=$("#qaCh").value;
+  const total = QA.filter(q=>ch==="all"||q[0]===ch).length;
+  const done = QA.filter((q,i)=>(ch==="all"||q[0]===ch)&&known.has(i)).length;
+  $("#qaBar").style.width = total? (done/total*100)+"%" : "0";
+  $("#qaStat").textContent = `覚えた問題 ${done} / ${total}`;
+  const box=$("#qaBox");
+  if(pos>=deck.length){
+    box.innerHTML = `<div class="card"><div class="empty">${deck.length? "このセットは終わりです。":"この範囲はすべて覚えました。"}<br><br>
+      <button class="btn main" id="qaAgain">${deck.length?"もう一周する":"すべての問題で復習する"}</button></div></div>`;
+    $("#qaAgain").onclick=()=>{ if(!deck.length) $("#qaMode").value="all"; newDeck(); };
+    return;
+  }
+  const i=deck[pos], [c,q,a,note]=QA[i];
+  box.innerHTML = `<div class="card">
+    <div class="meta"><span>${CH[c]}</span><span>${pos+1} / ${deck.length}</span></div>
+    <div class="qq">${esc(q)}</div>
+    <div class="ans" aria-live="polite">${revealed? esc(a)+(note?`<small>${esc(note)}</small>`:""):""}</div>
+    <div class="row">${revealed
+      ? `<button class="btn" id="qaNo">もう一回</button><button class="btn main" id="qaYes">覚えた</button>`
+      : `<button class="btn main" id="qaShow">答えを見る</button>`}</div></div>`;
+  if(revealed){
+    $("#qaYes").onclick=()=>{known.add(i); store.set("rekiso-known",[...known]); pos++; revealed=false; renderQA();};
+    $("#qaNo").onclick=()=>{deck.push(i); pos++; revealed=false; renderQA();};
+  } else $("#qaShow").onclick=()=>{revealed=true; renderQA();};
+}
+$("#qaCh").addEventListener("change",newDeck);
+$("#qaMode").addEventListener("change",newDeck);
+$("#qaReset").addEventListener("click",()=>{ if(confirm("「覚えた」の記録をすべて消しますか？")){known=new Set(); store.set("rekiso-known",[]); newDeck();} });
+
+/* ---------- 初期化 ---------- */
+chOptions($("#clozeCh")); chOptions($("#qaCh"));
+renderTL(); renderCloze(); newDeck();
+if(store.get("rekiso-sheet",false)) setSheet(true);
+route();
+</script>
+</body>
+</html>
